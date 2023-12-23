@@ -278,10 +278,62 @@ Amazon Cloud Watch
 Amazon CloudWatch is a monitoring and observability service provided by Amazon Web Services (AWS). It allows you to collect, monitor, and analyze data from various AWS resources and applications in real-time. CloudWatch provides insights into the performance, health, and operational status of your AWS infrastructure.
 CloudWatch collects and stores time-series data in the form of metrics. Metrics represent various aspects of your AWS resources, such as CPU utilization, network traffic, and error rates.
  
- 
 
- 
 
+ # Kubernetes 
+
+ Kubernetes also called k8s is a cointainer orchestration platform which is mainly used to managed containerized applications for enterprise level.
+ It is a Devops tool which is used in microservices, container applications etc. 
+ Mainly used for automating the deployment, scaling, and management of containerized applications. 
+
+ # DOCKER VS K8S 
+  Docker is primarily a containerization platform, while Kubernetes is a container orchestration platform that manages the deployment and operation of containerized applications at scale. They can be used together to provide a comprehensive solution for developing, packaging, and managing containerized applications in a production environment.
+  Basically there are so many disadvantages for enterprises to use docker. Some of the main drawbacks are SECURITY, AUTO HEALING, AUTO SCALING, SINGLE HOST, etc like this there are so many drawbacks to use docker in a enterprise level. So we use Docker and k8s as combination in enterprise. 
+It can be docker or any other container platform we can use but docker is the most famous one. 
+So, the main 4 drawbacks of Docker are handled by K8s. Which are
+AUTO SCALING, SECURITY, AUTO HEALING, SINGLE HOST
+Let us see how :
+
+In k8s the main thing is kubernetes cluster, so in general kubernetes is installed as a cluster
+In Kubernetes (K8s), a cluster refers to the collection of nodes that work together to run containerized applications. It is the fundamental unit in Kubernetes and consists of two main components:
+Master Node(s): This is the control plane of the cluster, responsible for managing and coordinating the overall cluster activities. The master node(s) includes components such as the API server, etcd (a distributed key-value store for configuration data), controller manager, and scheduler.
+
+Worker Node(s): These are the machines (physical or virtual) where containers are actually deployed and run. Each worker node runs a container runtime (such as Docker or containerd) and a set of Kubelet, which is responsible for ensuring that containers are running in a Pod.
+
+A Pod is the smallest and simplest unit in the Kubernetes object model, and it represents a single instance of a running process in a cluster.
+
+If you run k8s as a cluster (in production it is installed as a cluster) we can suppose there is a docker container which is about to get killed because there is no memory space so what this cluster will do is allocate another node using virtualization concept memory and make the container work. This is how a k8s is beneficial as a cluster
+But generally as a developer k8s is not installed as cluster instead as a single node. (developer environment)
+
+Using replica set we can get rid of one of the main drawbacks of docker which is auto scaling.  ReplicaSets are used for maintaining the desired number of copies of a set of Pods, typically for scaling and ensuring the availability of a specific application.
+There is something called pod auto scaler as well but that is very advanced. 
+
+Third drawback is auto healing, which k8s handles very well. Let's say a container or a pod goes down and incase of docker we need to check using commands and check logs what happened. But in k8s there is something called as API server where when a pod or container is about to get killed or about to be getting down as soon as k8s knows this k8s starts a new pod for this . 
+
+Fourth drawback is Enterprise level - So, k8s is basically a tool originated from a tool of Google borg. K8s is a enterprise level itself because it ensures security, network, firewall, etc. 
+
+
+# K8S ARCHITECTURE 
+The k8s architecture is basically of 2 :
+1. Control Plane
+The control plane is responsible for managing and controlling the overall state of the Kubernetes cluster. It acts as the brain of the system, making global decisions about the cluster (e.g., scheduling), as well as detecting and responding to cluster events (e.g., starting up a new pod when a deployment's replicas field is unsatisfied).
+2. Data plane 
+The data plane is responsible for handling the network traffic of the application workloads. It consists of nodes (worker machines) that run containers and manage the networking between them.
+
+In summary, the control plane manages and orchestrates the overall state of the Kubernetes cluster, while the data plane handles the execution of containerized applications and the networking between them. The separation allows for better scalability, fault isolation, and modular development and maintenance of the Kubernetes system.
+
+Worker nodes consists of pod, container runtime, kubelet, kube proxy
+A Pod is the smallest and simplest unit in the Kubernetes object model. It represents a single instance of a running process in a cluster and can contain one or more containers. Containers within a Pod share the same network namespace and can communicate with each other using localhost.
+A Container Runtime is the software responsible for running containers within a Pod. Kubernetes supports various container runtimes, including Docker, containerd, and others. The container runtime is responsible for pulling container images, creating and managing container processes, and handling aspects of container lifecycle, such as starting, stopping, and restarting containers.
+Kubelet is an agent that runs on each node in the Kubernetes cluster. It is responsible for ensuring that containers are running in a Pod. 
+Kube-Proxy is a network proxy that runs on each node in the cluster. It is responsible for maintaining network rules that allow communication to and from Pods from within the cluster.
+In summary, a Pod is the basic unit of deployment, a Container Runtime manages the execution of containers, Kubelet ensures that Pods are running on nodes, and Kube-Proxy handles networking and basic load balancing for services within the cluster. 
+
+The control plane in Kubernetes consists of several components that work together to manage and control the overall state of the cluster.
+The API server is the central management point for the entire Kubernetes cluster. It exposes the Kubernetes API and is responsible for receiving and handling requests from users, operators, and other components.
+etcd is a distributed key-value store that is used to store configuration data and the state of the entire Kubernetes cluster. It ensures consistency and reliability in maintaining cluster configuration information.
+The Controller Manager watches the state of the cluster through the API server. It is responsible for regulating the state of various objects in the cluster, such as deployments, nodes, and pods.
+The Scheduler is responsible for making decisions about where to deploy Pods based on resource availability, constraints, and other factors. It schedules the workload onto available worker nodes in the cluster.
 
 
  
