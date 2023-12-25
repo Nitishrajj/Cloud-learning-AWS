@@ -335,6 +335,58 @@ etcd is a distributed key-value store that is used to store configuration data a
 The Controller Manager watches the state of the cluster through the API server. It is responsible for regulating the state of various objects in the cluster, such as deployments, nodes, and pods.
 The Scheduler is responsible for making decisions about where to deploy Pods based on resource availability, constraints, and other factors. It schedules the workload onto available worker nodes in the cluster.
 
+Controller manager - To ensure that our pods are running we need to have something called controller manager. Or a manager which is managing the controllers is called controller manager. (basic def)
+Cloud controller manager (CCM) this is used only when you use kubernetes on cloud and this is not used for on - premises !!
+
+
+# Deploying first APP in k8s
+In k8s lowest level deployment is pod
+Pod is the smallest unit in k8s. A pod is described as how to run a container. In k8s instead of container we deploy pod. A pod can be one or many containers. We use more than one containers in pod is when the 2nd container should be there to run the main container. 
+Instead of using different docker commands we use a .yml file and insert all the docker commands in the .yml file and run that which will run the pod. Everything in k8s will be in .yml file only. 
+Benefits of multiple containers in pod is - shared storage and shared network
+IP ADD are given to pods not containers, its called cluster ip add. POD is like a wrapper for containers. It is usefull when you have 100s of containers
+Different ways of deployment - deploy as pod, service, deployment
+Kubectl - command line to interact with kubernetes. 
+" kubectl get pods, kubectl get logs, kubectl get deployment, kubectl get nodes, kubectl logs nameofthepod, kubectl describe  nameofthepod" - basic most used kubectl commands. 
+
+
+.yml file in pod vs docker command- 
+".yml file 
+apiVersion: v1
+kind: pod
+metadata: 
+ name: nginx
+spec:
+ containers:
+ -name: nginx
+ image: nginx:1.14.2
+ ports:
+ -containerPort: 80"
+
+       VS
+
+ "docker command
+docker run -d nginx:1.14.2 --name nginx -p 80:80"
+
+
+
+"CREATE A pod using kubectl create -f pod.yml"
+
+# Container vs Pod vs Deployment  in kubernetes 
+You create and image and execute commands in the cli which is container where as a pod is single or mutliple containers where all the commands which you want to execute will be in a file called .yml file and then execute. 
+A deployment is something which offers auto healing, auto scaling etc which is the main reason why we use k8s over docker. 
+K8s tells us to create a pod using deployment instead of deploying it as a pod.
+We have a feature called replica set in deployment which is used while load balancing. 
+Replica set is a contoller in k8s so suppose you gave replica set as 2 and suddenly someone deletes a pod so replica set will auto heal this using the controller feature of it. 
+Replica set(kubernetes controller) follows the .yaml file blindly.
+
+
+
+
+
+
+
+
 
  
  
