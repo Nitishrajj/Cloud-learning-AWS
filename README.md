@@ -363,7 +363,7 @@ spec:
  ports:
  -containerPort: 80"
 
-       VS
+   VS
 
  "docker command
 docker run -d nginx:1.14.2 --name nginx -p 80:80"
@@ -379,6 +379,26 @@ K8s tells us to create a pod using deployment instead of deploying it as a pod.
 We have a feature called replica set in deployment which is used while load balancing. 
 Replica set is a contoller in k8s so suppose you gave replica set as 2 and suddenly someone deletes a pod so replica set will auto heal this using the controller feature of it. 
 Replica set(kubernetes controller) follows the .yaml file blindly.
+
+# Kubernetes Service  (SVC)
+
+For each deployment we will create a service. 
+Why do we need a service ?
+Service in kubernetes offers load balancing using kube proxy.
+
+By default, kube-proxy uses a simple round-robin algorithm for distributing traffic across the available Pods associated with a Service. Other algorithms, like least connections, can be used depending on the Kube-Proxy mode and configuration.
+Kubernetes Services provide a level of abstraction for accessing Pods. Instead of directly addressing individual Pods, clients interact with the stable IP address (ClusterIP) or hostname associated with the Service.
+Services use label selectors to identify the Pods they represent. Clients or other components within the cluster can use label selectors to discover and interact with specific sets of Pods.
+
+Service is also used to expose to external world. 
+Your cluster or pod can be accessed to outisde world using kubernetes cluster.
+
+YAML ---> 1 Cluster IP (ONLY accessible to people who can access the cluster)
+2 Nodeport  (ONLY inside your organization)
+3 Load balancer (External world)
+
+
+
 
 
 
