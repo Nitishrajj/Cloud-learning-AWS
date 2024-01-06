@@ -277,7 +277,50 @@ Amazon Cloud Watch
  
 Amazon CloudWatch is a monitoring and observability service provided by Amazon Web Services (AWS). It allows you to collect, monitor, and analyze data from various AWS resources and applications in real-time. CloudWatch provides insights into the performance, health, and operational status of your AWS infrastructure.
 CloudWatch collects and stores time-series data in the form of metrics. Metrics represent various aspects of your AWS resources, such as CPU utilization, network traffic, and error rates.
+
+
+# Monolithic vs Mircroservices
  
+Monolithic architecture and microservices architecture are two different approaches to designing and organizing software applications. Each has its own set of advantages and disadvantages, and the choice between them depends on various factors like the size and complexity of the project, development team structure, scalability requirements, and more. Here's an overview of both architectures:
+
+Monolithic Architecture:
+
+Single Unit: In a monolithic architecture, the entire application is built as a single, tightly integrated unit.
+Components: All the components and modules of the application, such as the user interface, business logic, and data access layer, are combined into a single codebase.
+Communication: Components within the monolith communicate with each other through direct method calls or function invocations.
+Development and Deployment: Development and deployment are simpler in monolithic applications, as there is only one codebase to manage.
+Scalability: Scaling a monolithic application usually involves replicating the entire application, which may be inefficient for certain use cases.
+Microservices Architecture:
+
+Decomposed Services: In a microservices architecture, the application is broken down into a collection of small, independent services that communicate with each other through APIs.
+Autonomous Units: Each microservice is a self-contained unit with its own database, business logic, and user interface, allowing for independent development and deployment.
+Scalability: Microservices allow for more granular scalability, as individual services can be scaled independently based on demand.
+Technological Diversity: Each microservice can be developed using different technologies and programming languages, allowing teams to choose the best tools for a specific task.
+Flexibility and Agility: Microservices architecture enables better flexibility and agility, as changes to one service do not necessarily affect the entire application.
+Comparison:
+
+Complexity:
+
+Monolithic: Simple to develop and deploy initially, but can become complex and harder to maintain as the application grows.
+Microservices: More complex to set up initially, but easier to manage and scale as the application grows.
+Scalability:
+
+Monolithic: Scaling involves replicating the entire application, which may be inefficient for certain components.
+Microservices: Granular scalability allows for scaling individual services based on demand.
+Development Speed:
+
+Monolithic: Faster to develop initially, but changes may require redeployment of the entire application.
+Microservices: Slower to set up initially, but enables independent development and deployment of services, allowing for faster iteration.
+Fault Isolation:
+
+Monolithic: A failure in one module can affect the entire application.
+Microservices: Failures are isolated to individual services, reducing the impact on the entire system.
+Technology Stack:
+
+Monolithic: Homogeneous technology stack.
+Microservices: Allows for heterogeneous technology stacks, enabling the use of different technologies for different services.
+In summary, the choice between monolithic and microservices architecture depends on the specific needs and goals of the project. Monolithic architecture may be suitable for smaller projects with simpler requirements, while microservices architecture is often chosen for larger, more complex systems that require scalability, flexibility, and independent service development.
+
 
 
  # Kubernetes 
@@ -288,7 +331,7 @@ CloudWatch collects and stores time-series data in the form of metrics. Metrics 
 
  # DOCKER VS K8S 
   Docker is primarily a containerization platform, while Kubernetes is a container orchestration platform that manages the deployment and operation of containerized applications at scale. They can be used together to provide a comprehensive solution for developing, packaging, and managing containerized applications in a production environment.
-  Basically there are so many disadvantages for enterprises to use docker. Some of the main drawbacks are SECURITY, AUTO HEALING, AUTO SCALING, SINGLE HOST, etc like this there are so many drawbacks to use docker in a enterprise level. So we use Docker and k8s as combination in enterprise. 
+  Basically there are so many disadvantages for enterprises to use docker. Some of the main drawbacks are  SECURITY,  AUTO HEALING, AUTO SCALING, SINGLE HOST, etc like this there are so many drawbacks to use docker in a enterprise level. So we use Docker and k8s as combination in enterprise. 
 It can be docker or any other container platform we can use but docker is the most famous one. 
 So, the main 4 drawbacks of Docker are handled by K8s. Which are
 AUTO SCALING, SECURITY, AUTO HEALING, SINGLE HOST
